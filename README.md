@@ -1,6 +1,6 @@
 # 100-days-of-swiftui
 
-**Current Day: 18**
+**Current Day: 19**
 
 ## Purpose
 
@@ -14,7 +14,7 @@ I found Checkpoint 5 (Day 9) difficult as I was introduced to closures, as well 
 
 #### Day 17
 
-I have now successfully built my first iOS app using SwiftUI: a Tip Calculator. Looking forward to progressing further.
+I have now successfully built my first iOS app using SwiftUI: a Tip Calculator.
 
 ## Course
 
