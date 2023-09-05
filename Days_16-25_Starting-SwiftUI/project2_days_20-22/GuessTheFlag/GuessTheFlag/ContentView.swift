@@ -33,8 +33,10 @@ struct PinwheelButtonView: View {
 
 struct ContentView: View {
     @State private var showingScore = false
+    @State private var showingRestart = false
     @State private var scoreTitle = ""
     @State private var score = 0
+    @State private var questionCount = 0
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -83,7 +85,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 
-                Text("Score: \(score)")
+                Text("Score: \(score)/\(questionCount)")
                     .foregroundColor(.white)
                     .font(.title.bold())
                 
@@ -96,22 +98,45 @@ struct ContentView: View {
         } message: {
             Text("Your score is \(score)")
         }
+        .alert("Game Over", isPresented: $showingRestart) {
+            Button("Restart", action: restartGame)
+        } message: {
+            Text("Your final score is \(score)/\(questionCount)")
+        }
+        
+
     }
     
     func flagTapped(_ number: Int) {
+        
+        questionCount += 1
+        
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong, that is the flag of \(countries[number])"
         }
         
         showingScore = true
+        
+        if questionCount < 8 {
+            showingRestart = false
+        } else {
+            showingScore = false
+            showingRestart = true
+        }
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer =  Int.random(in: 0...2)
+    }
+    
+    func restartGame() {
+        score = 0
+        questionCount = 0
+        askQuestion()
     }
 }
 
