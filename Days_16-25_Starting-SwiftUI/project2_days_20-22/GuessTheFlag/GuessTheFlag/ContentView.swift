@@ -30,6 +30,16 @@ struct PinwheelButtonView: View {
     }
 }
 
+struct FlagImage: View {
+    var imageName: String
+    
+    var body: some View {
+        Image(imageName)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .shadow(radius: 5)
+    }
+}
 
 struct ContentView: View {
     @State private var showingScore = false
@@ -70,10 +80,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
+                            FlagImage(imageName: countries[number])
                         }
                     }
                 }

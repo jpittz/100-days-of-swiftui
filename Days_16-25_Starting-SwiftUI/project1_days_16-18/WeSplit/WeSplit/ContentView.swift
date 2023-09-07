@@ -40,7 +40,7 @@ struct ContentView: View {
         
         return grandTotal
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -73,6 +73,8 @@ struct ContentView: View {
                 } header: {
                     Text("Check total")
                 }
+                .foregroundColor(tipPercentage == 0 ? Color.red : Color.primary)
+
                 
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
