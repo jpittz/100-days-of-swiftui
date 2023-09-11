@@ -1,14 +1,14 @@
 //
-//  RockPaperScissorsApp.swift
-//  RockPaperScissors
+//  BetterRestApp.swift
+//  BetterRest
 //
-//  Created by James on 08/09/2023.
+//  Created by James on 11/09/2023.
 //
 
 import SwiftUI
 
 @main
-struct RockPaperScissorsApp: App {
+struct BetterRestApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

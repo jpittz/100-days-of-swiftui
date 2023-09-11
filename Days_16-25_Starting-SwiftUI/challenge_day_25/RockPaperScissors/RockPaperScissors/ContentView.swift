@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  RockPaperScissors
 //
-//  Created by Pittman, James (J.A.) on 08/09/2023.
+//  Created by James on 08/09/2023.
 //
 
 import SwiftUI
