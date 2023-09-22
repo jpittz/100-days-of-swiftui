@@ -16,9 +16,14 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var playerScore = 0
+    
     var body: some View {
         NavigationView {
             List {
+                Section {
+                    Text("Player Score: \(playerScore)")
+                }
                 Section {
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)
@@ -33,6 +38,13 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(rootWord)
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button("New Word") {
+                        startGame()
+                    }
+                }
+            }
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
             .alert(errorTitle, isPresented: $showingError) {
@@ -44,7 +56,12 @@ struct ContentView: View {
     }
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
+        guard answer.count > 2 else { return }
+        
+        guard isSame(word: answer) else {
+            wordError(title: "Can't use the word itself", message: "Be more original!")
+            return
+        }
         
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original!")
@@ -64,10 +81,14 @@ struct ContentView: View {
         withAnimation {
             usedWords.insert(answer, at: 0)
         }
+        playerScore += answer.count
         newWord = ""
     }
     
     func startGame() {
+        playerScore = 0
+        usedWords.removeAll()
+        
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
@@ -81,6 +102,10 @@ struct ContentView: View {
     
     func isOriginal(word: String) -> Bool {
         !usedWords.contains(word)
+    }
+    
+    func isSame(word: String) -> Bool {
+        return word != rootWord ? true : false
     }
     
     func isPossible(word: String) -> Bool {

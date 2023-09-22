@@ -1,6 +1,6 @@
 # 100-days-of-swiftui
 
-**Current Day: 30/100**
+**Current Day: 31/100**
 
 ## Purpose
 
