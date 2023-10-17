@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+var currencyFormatter : FloatingPointFormatStyle<Double>.Currency {
+    let currencyCode = Locale.current.currency?.identifier ?? "USD"
+    return FloatingPointFormatStyle<Double>.Currency(code: currencyCode)
+}
+
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -14,19 +19,46 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                Section {
+                    ForEach(expenses.items) { item in
+                        if item.type == "Personal" {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                }
+                                
+                                Spacer()
+                                Text(item.amount, format: currencyFormatter)
+                                    .foregroundColor(item.amount < 10 ? .green : item.amount < 100 ? .orange : .red)
+                            }
                         }
-                        
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "GBP"))
                     }
+                    .onDelete(perform: removeItems)
+                } header: {
+                    Text("Personal")
                 }
-                .onDelete(perform: removeItems)
+                Section {
+                    ForEach(expenses.items) { item in
+                        if item.type == "Business" {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                }
+                                
+                                Spacer()
+                                Text(item.amount, format: currencyFormatter)
+                                    .foregroundColor(item.amount < 10 ? .green : item.amount < 100 ? .orange : .red)
+                            }
+                        }
+                    }
+                    .onDelete(perform: removeItems)
+                } header: {
+                    Text("Business")
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -45,6 +77,7 @@ struct ContentView: View {
         expenses.items.remove(atOffsets: offsets)
     }
 }
+
 
 #Preview {
     ContentView()
