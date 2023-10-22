@@ -32,5 +32,6 @@ struct AstronautView_Previews: PreviewProvider {
     
     static var previews: some View {
         AstronautView(astronaut: astronauts["armstrong"]!)
+            .preferredColorScheme(.dark)
     }
 }

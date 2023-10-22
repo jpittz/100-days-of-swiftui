@@ -69,6 +69,8 @@ struct CrewScrollView: View {
 
 struct MissionView: View {
     
+    @State private var animationAmount = 0.0
+    
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
@@ -86,6 +88,16 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding()
+                        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0.05, y: 1, z: 0.05))
+                        .onAppear {
+                            if animationAmount == 0 {
+                                DispatchQueue.main.async {
+                                    withAnimation(.interpolatingSpring(stiffness: 11, damping: 4)) { //stiffness: 35, damping: 12
+                                        animationAmount += 360
+                                    }
+                                }
+                            }
+                        }
                     
                     Text(mission.formattedLaunchDate)
                         .font(.headline)
