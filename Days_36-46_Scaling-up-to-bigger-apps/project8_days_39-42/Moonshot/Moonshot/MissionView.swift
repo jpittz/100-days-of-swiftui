@@ -7,7 +7,68 @@
 
 import SwiftUI
 
+struct HighlightsView: View {
+    
+    let mission: Mission
+    
+    var body: some View {
+        Text("Mission Highlights")
+            .font(.title.bold())
+            .foregroundColor(.red.opacity(0.8))
+            .padding(.bottom, 5)
+        
+        Text(mission.description)
+            .padding(.bottom)
+
+    }
+}
+
+struct CrewScrollView: View {
+    
+    let crew: [MissionView.CrewMember]
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(crew, id: \.role) { crewMember in
+                    NavigationLink {
+                        AstronautView(astronaut: crewMember.astronaut)
+                    } label: {
+                        HStack {
+                            Image(crewMember.astronaut.id)
+                                .resizable()
+                                .frame(width: 104, height: 72)
+                                .clipShape(Capsule())
+                                .overlay(
+                                    Capsule()
+                                        .strokeBorder(.white, lineWidth: 1)
+                                )
+                            
+                            VStack(alignment: .leading) {
+                                Text(crewMember.astronaut.name)
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                                
+                                Text(crewMember.role)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        .padding(.trailing)
+                        .overlay(
+                            Capsule()
+                                .strokeBorder(.red.opacity(0.8), lineWidth: 1)
+                        )
+                        .padding(.trailing, 12)
+                    }
+                }
+            }
+            .padding(.leading)
+        }
+    }
+}
+
 struct MissionView: View {
+    
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
@@ -26,14 +87,13 @@ struct MissionView: View {
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding()
                     
+                    Text(mission.formattedLaunchDate)
+                        .font(.headline)
+                        .foregroundColor(.white.opacity(0.5))
+                        .padding(3)
+                    
                     VStack(alignment: .leading) {
-                        Text("Mission Highlights")
-                            .font(.title.bold())
-                            .foregroundColor(.red.opacity(0.8))
-                            .padding(.bottom, 5)
-                        
-                        Text(mission.description)
-                            .padding(.bottom)
+                        HighlightsView(mission: mission)
                         
                         Text("Crew")
                             .font(.title.bold())
@@ -42,42 +102,7 @@ struct MissionView: View {
                     }
                     .padding(.horizontal)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(crew, id: \.role) { crewMember in
-                                NavigationLink {
-                                    AstronautView(astronaut: crewMember.astronaut)
-                                } label: {
-                                    HStack {
-                                        Image(crewMember.astronaut.id)
-                                            .resizable()
-                                            .frame(width: 104, height: 72)
-                                            .clipShape(Capsule())
-                                            .overlay(
-                                                Capsule()
-                                                    .strokeBorder(.white, lineWidth: 1)
-                                            )
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text(crewMember.astronaut.name)
-                                                .foregroundColor(.white)
-                                                .font(.headline)
-                                            
-                                            Text(crewMember.role)
-                                                .foregroundColor(.secondary)
-                                        }
-                                    }
-                                    .padding(.trailing)
-                                    .overlay(
-                                        Capsule()
-                                            .strokeBorder(.red.opacity(0.8), lineWidth: 1)
-                                    )
-                                    .padding(.trailing, 12)
-                                }
-                            }
-                        }
-                        .padding(.leading)
-                    }
+                    CrewScrollView(crew: crew)
                 }
                 .padding(.bottom)
             }

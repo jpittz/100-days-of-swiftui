@@ -1,6 +1,6 @@
 # 100-days-of-swiftui
 
-**Current Day: 41/100**
+**Current Day: 42/100**
 
 *Note: Day 35 currently incomplete*
 
@@ -17,6 +17,10 @@ I found Checkpoint 5 (Day 9) difficult as I was introduced to closures, as well 
 #### Day 17
 
 I have now successfully built my first iOS app using SwiftUI: a Tip Calculator.
+
+### Day 42
+
+I have finished Moonshot (Project 8), which has been my favourite app so far. It introduced me to using JSON files, grids, Codable and has given me a much better understanding of how to seperate my code into and navigate between 'Views'. Additionally, It gave me a lot of opportunity to focus on the design aspect of the app, and adjust it to my liking.
 
 ## Course
 

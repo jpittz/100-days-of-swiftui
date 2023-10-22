@@ -2,7 +2,7 @@
 //  AstronautView.swift
 //  Moonshot
 //
-//  Created by Pittman, James (J.A.) on 20/10/2023.
+//  Created by James on 20/10/2023.
 //
 
 import SwiftUI
