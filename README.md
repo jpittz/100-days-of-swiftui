@@ -1,6 +1,6 @@
 # 100-days-of-swiftui
 
-**Current Day: 44/100**
+**Current Day: 45/100**
 
 *Note: Day 35 currently incomplete*
 
@@ -21,6 +21,10 @@ I have now successfully built my first iOS app using SwiftUI: a Tip Calculator.
 #### Day 42
 
 I have finished Moonshot (Project 8), which has been my favourite app so far. It introduced me to using JSON files, grids, Codable and has given me a much better understanding of how to seperate my code into and navigate between 'Views'. Additionally, It gave me a lot of opportunity to focus on the design aspect of the app, and adjust it to my liking.
+
+#### Day 45
+
+Continued work after finishing this year of Uni. Course has updated from iOS 16 to iOS 17. Finishing this project from YouTube then moving onto the iOS 17 course.
 
 ## Course
 

@@ -55,7 +55,7 @@ struct ColorCyclingCircle: View {
     
     var body: some View {
         ZStack {
-            ForEach(0..<steps) { value in
+            ForEach(0..<steps, id: \.self) { value in
                 Circle()
                     .inset(by: Double(value))
                     .strokeBorder(
@@ -85,7 +85,7 @@ struct ColorCyclingCircle: View {
     }
 }
 
-struct ContentView: View {
+struct CircleView: View {
     @State private var colorCycle = 0.0
     
     var body: some View {
@@ -98,6 +98,42 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView: View {
+    @State private var amount = 0.0
+    
+    var body: some View {
+        VStack {
+            ZStack {
+                Circle()
+                    .fill(.red)
+                    .frame(width: 200 * amount)
+                    .offset(x: -50, y: -80)
+                    .blendMode(.screen)
+                
+                Circle()
+                    .fill(.green)
+                    .frame(width: 200 * amount)
+                    .offset(x: 50, y: -80)
+                    .blendMode(.screen)
+                
+                Circle()
+                    .fill(.blue)
+                    .frame(width: 200 * amount)
+                    .blendMode(.screen)
+            }
+            .frame(width: 300, height: 300)
+            
+            Slider(value: $amount)
+                .padding()
+        }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+        .background(.black)
+        .ignoresSafeArea()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
