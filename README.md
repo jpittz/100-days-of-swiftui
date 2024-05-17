@@ -1,6 +1,6 @@
 # 100-days-of-swiftui
 
-**Current Day: 45/100**
+**Current Day: 46/100**
 
 *Note: Day 35 currently incomplete*
 

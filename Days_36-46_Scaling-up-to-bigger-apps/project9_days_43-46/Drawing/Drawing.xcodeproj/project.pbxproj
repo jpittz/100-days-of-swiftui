@@ -11,6 +11,8 @@
 		9F06D9EB2AE6AF690078EA10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06D9EA2AE6AF690078EA10 /* ContentView.swift */; };
 		9F06D9ED2AE6AF6C0078EA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F06D9EC2AE6AF6C0078EA10 /* Assets.xcassets */; };
 		9F06D9F02AE6AF6C0078EA10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F06D9EF2AE6AF6C0078EA10 /* Preview Assets.xcassets */; };
+		9F64C6B62BF752DA00D159D5 /* ShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F64C6B52BF752DA00D159D5 /* ShapesView.swift */; };
+		9F64C6B82BF7598700D159D5 /* CheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F64C6B72BF7598700D159D5 /* CheckerboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		9F06D9EA2AE6AF690078EA10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F06D9EC2AE6AF6C0078EA10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F06D9EF2AE6AF6C0078EA10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F64C6B52BF752DA00D159D5 /* ShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesView.swift; sourceTree = "<group>"; };
+		9F64C6B72BF7598700D159D5 /* CheckerboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				9F06D9E82AE6AF690078EA10 /* DrawingApp.swift */,
 				9F06D9EA2AE6AF690078EA10 /* ContentView.swift */,
+				9F64C6B72BF7598700D159D5 /* CheckerboardView.swift */,
+				9F64C6B52BF752DA00D159D5 /* ShapesView.swift */,
 				9F06D9EC2AE6AF6C0078EA10 /* Assets.xcassets */,
 				9F06D9EE2AE6AF6C0078EA10 /* Preview Content */,
 			);
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F06D9EB2AE6AF690078EA10 /* ContentView.swift in Sources */,
+				9F64C6B82BF7598700D159D5 /* CheckerboardView.swift in Sources */,
 				9F06D9E92AE6AF690078EA10 /* DrawingApp.swift in Sources */,
+				9F64C6B62BF752DA00D159D5 /* ShapesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
